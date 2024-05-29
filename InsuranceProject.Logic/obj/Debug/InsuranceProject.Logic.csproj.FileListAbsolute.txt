@@ -1,0 +1,17 @@
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\InsuranceProject.Logic.dll.config
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\InsuranceProject.Logic.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\InsuranceProject.Logic.pdb
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\EntityFramework.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\EntityFramework.SqlServer.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\InsuranceProject.Core.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\InsuranceProject.Models.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\InsuranceProject.Core.pdb
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\InsuranceProject.Models.pdb
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\InsuranceProject.Models.dll.config
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\EntityFramework.xml
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\bin\Debug\EntityFramework.SqlServer.xml
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\obj\Debug\InsuranceProject.Logic.csproj.AssemblyReference.cache
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\obj\Debug\InsuranceProject.Logic.csproj.CoreCompileInputs.cache
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\obj\Debug\InsuranceProject.Logic.csproj.CopyComplete
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\obj\Debug\InsuranceProject.Logic.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Logic\obj\Debug\InsuranceProject.Logic.pdb

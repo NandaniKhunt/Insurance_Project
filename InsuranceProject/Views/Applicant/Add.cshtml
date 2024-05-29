@@ -1,0 +1,162 @@
+﻿@model InsuranceProject.Models.Custom.ApplicantModel
+@{
+    ViewBag.Title = "Add";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/ApplicantScript.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5 class="text-center">Applicant Information</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <form class="form-horizontal" method="post">
+                          
+                            <div class="modal-body">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Effective Date</label>
+                                        <input type="date" id="txtdate" name="EffectiveDate" class="form-control" />
+                                        @Html.ValidationMessageFor(model => model.EffectiveDate, "", new { @class = "error" })
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtfnm">First Name</label>
+                                            <input type="text" id="txtfnm" name="FirstName" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtlnm">Last Name</label>
+                                            <input type="text" id="txtlnm" name="LastName" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtemail">Email</label>
+                                            <input type="text" id="txtemail" name="Email" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtpno">Phone No</label>
+                                            <input type="text" id="txtpno" name="PhoneNo" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtgadd">Garaging Address</label>
+                                            <input type="text" id="txtgadd" name="GaragingAddress" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.GaragingAddress, "", new { @class = "error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtapart">Apartment</label>
+                                            <input type="text" id="txtapart" name="ApartmentAddress" class="form-control" />
+                                            @Html.ValidationMessageFor(model => model.ApartmentAddress, "", new { @class = "error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtzip">Zipcode</label>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtzip" name="Zipcode" class="form-control" />
+                                                    @Html.ValidationMessageFor(model => model.Zipcode, "", new { @class = "error" })
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtcity" name="City" class="form-control" readonly />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtstate" name="State" class="form-control" readonly />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="btnclick">Mailing Address Same As Garaging Address?</label>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" id="yesButton" onclick="btnClick()">YES</button>
+                                                <button type="button" id="noButton" onclick="btnClick()">NO </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div id="mailingAddressFields" style="display:none;">
+                                        <div class="col-md-6 mailing-address">
+                                            <div class="form-group">
+                                                <label for="txtgadd">Mailing Address1</label>
+                                                <input type="text" id="txtmailgadd" name="MailAddress" class="form-control" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mailing-address">
+                                            <div class="form-group">
+                                                <label for="txtapart">Apartment</label>
+                                                <input type="text" id="txtmailapart" name="MailApartment" class="form-control" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mailing-address">
+                                            <div class="form-group">
+                                                <label for="txtmailzip">Zipcode</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <input type="text" id="txtmailzip" name="MailZipcode" class="form-control" />
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <input type="text" id="txtmailcity" name="Mailcity" class="form-control" readonly />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <input type="text" id="txtmailstate" name="MailState" class="form-control" readonly />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12 text-center">
+                                            @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })
+                                            <button type="submit" id="btndata" class="btn btn-success">Countinue</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

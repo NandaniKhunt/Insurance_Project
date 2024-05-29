@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InsuranceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Applicant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EffectiveDate" Type="date" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+          <Property Name="GaragingAddress" Type="varchar" MaxLength="200" />
+          <Property Name="ApartmentAddress" Type="varchar" MaxLength="200" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="15" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="MailAddress" Type="varchar" MaxLength="200" />
+          <Property Name="MailApartment" Type="varchar" MaxLength="200" />
+          <Property Name="MailZipcode" Type="int" />
+          <Property Name="Mailcity" Type="varchar" MaxLength="50" />
+          <Property Name="MailState" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="LicenseNo" Type="varchar" MaxLength="30" />
+          <Property Name="Status" Type="varchar" MaxLength="30" />
+          <Property Name="FirstName" Type="varchar" MaxLength="30" />
+          <Property Name="LastName" Type="varchar" MaxLength="30" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="15" />
+          <Property Name="HomeType" Type="varchar" MaxLength="20" />
+          <Property Name="HomeStatusType" Type="varchar" MaxLength="20" />
+          <Property Name="Education" Type="varchar" MaxLength="30" />
+          <Property Name="Occupation" Type="varchar" MaxLength="30" />
+          <Property Name="ApplicantId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DOB" Type="date" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Vehical">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VIN" Type="varchar" MaxLength="18" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Make" Type="varchar" MaxLength="50" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+          <Property Name="Ownership" Type="varchar" MaxLength="10" />
+          <Property Name="ApplicantId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="VehicleUseId" Type="int" />
+          <Property Name="VehicalUse" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="VehicleUse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="VIN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VIN" Type="varchar" MaxLength="18" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Make" Type="varchar" MaxLength="50" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Driver__Applican__4CA06362">
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="ApplicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Driver__StateId__4BAC3F29">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehical__Applica__403A8C7D">
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1" />
+          <End Role="Vehical" Type="Self.Vehical" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehical">
+              <PropertyRef Name="ApplicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehical__Vehicle__440B1D61">
+          <End Role="VehicleUse" Type="Self.VehicleUse" Multiplicity="0..1" />
+          <End Role="Vehical" Type="Self.Vehical" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleUse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehical">
+              <PropertyRef Name="VehicleUseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsuranceDBModelStoreContainer">
+          <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehical" EntityType="Self.Vehical" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleUse" EntityType="Self.VehicleUse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VIN" EntityType="Self.VIN" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Driver__Applican__4CA06362" Association="Self.FK__Driver__Applican__4CA06362">
+            <End Role="Applicant" EntitySet="Applicant" />
+            <End Role="Driver" EntitySet="Driver" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Driver__StateId__4BAC3F29" Association="Self.FK__Driver__StateId__4BAC3F29">
+            <End Role="State" EntitySet="State" />
+            <End Role="Driver" EntitySet="Driver" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehical__Applica__403A8C7D" Association="Self.FK__Vehical__Applica__403A8C7D">
+            <End Role="Applicant" EntitySet="Applicant" />
+            <End Role="Vehical" EntitySet="Vehical" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehical__Vehicle__440B1D61" Association="Self.FK__Vehical__Vehicle__440B1D61">
+            <End Role="VehicleUse" EntitySet="VehicleUse" />
+            <End Role="Vehical" EntitySet="Vehical" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InsuranceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Applicant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="0" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GaragingAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ApartmentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MailApartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MailZipcode" Type="Int32" />
+          <Property Name="Mailcity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MailState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Drivers" Relationship="Self.FK__Driver__Applican__4CA06362" FromRole="Applicant" ToRole="Driver" />
+          <NavigationProperty Name="Vehicals" Relationship="Self.FK__Vehical__Applica__403A8C7D" FromRole="Applicant" ToRole="Vehical" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="LicenseNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HomeType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HomeStatusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Education" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Occupation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK__Driver__Applican__4CA06362" FromRole="Driver" ToRole="Applicant" />
+          <NavigationProperty Name="State" Relationship="Self.FK__Driver__StateId__4BAC3F29" FromRole="Driver" ToRole="State" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Drivers" Relationship="Self.FK__Driver__StateId__4BAC3F29" FromRole="State" ToRole="Driver" />
+        </EntityType>
+        <EntityType Name="Vehical">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VIN" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ownership" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="VehicleUseId" Type="Int32" />
+          <Property Name="VehicalUse" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK__Vehical__Applica__403A8C7D" FromRole="Vehical" ToRole="Applicant" />
+          <NavigationProperty Name="VehicleUse" Relationship="Self.FK__Vehical__Vehicle__440B1D61" FromRole="Vehical" ToRole="VehicleUse" />
+        </EntityType>
+        <EntityType Name="VehicleUse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vehicals" Relationship="Self.FK__Vehical__Vehicle__440B1D61" FromRole="VehicleUse" ToRole="Vehical" />
+        </EntityType>
+        <EntityType Name="VIN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VIN1" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Driver__Applican__4CA06362">
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="ApplicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehical__Applica__403A8C7D">
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1" />
+          <End Role="Vehical" Type="Self.Vehical" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehical">
+              <PropertyRef Name="ApplicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Driver__StateId__4BAC3F29">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehical__Vehicle__440B1D61">
+          <End Role="VehicleUse" Type="Self.VehicleUse" Multiplicity="0..1" />
+          <End Role="Vehical" Type="Self.Vehical" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleUse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehical">
+              <PropertyRef Name="VehicleUseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsuranceDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applicants" EntityType="Self.Applicant" />
+          <EntitySet Name="Drivers" EntityType="Self.Driver" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="Vehicals" EntityType="Self.Vehical" />
+          <EntitySet Name="VehicleUses" EntityType="Self.VehicleUse" />
+          <EntitySet Name="VINs" EntityType="Self.VIN" />
+          <AssociationSet Name="FK__Driver__Applican__4CA06362" Association="Self.FK__Driver__Applican__4CA06362">
+            <End Role="Applicant" EntitySet="Applicants" />
+            <End Role="Driver" EntitySet="Drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehical__Applica__403A8C7D" Association="Self.FK__Vehical__Applica__403A8C7D">
+            <End Role="Applicant" EntitySet="Applicants" />
+            <End Role="Vehical" EntitySet="Vehicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Driver__StateId__4BAC3F29" Association="Self.FK__Driver__StateId__4BAC3F29">
+            <End Role="State" EntitySet="States" />
+            <End Role="Driver" EntitySet="Drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehical__Vehicle__440B1D61" Association="Self.FK__Vehical__Vehicle__440B1D61">
+            <End Role="VehicleUse" EntitySet="VehicleUses" />
+            <End Role="Vehical" EntitySet="Vehicals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InsuranceDBModelStoreContainer" CdmEntityContainer="InsuranceDBEntities">
+          <EntitySetMapping Name="Applicants">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Applicant">
+              <MappingFragment StoreEntitySet="Applicant">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="GaragingAddress" ColumnName="GaragingAddress" />
+                <ScalarProperty Name="ApartmentAddress" ColumnName="ApartmentAddress" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="MailApartment" ColumnName="MailApartment" />
+                <ScalarProperty Name="MailZipcode" ColumnName="MailZipcode" />
+                <ScalarProperty Name="Mailcity" ColumnName="Mailcity" />
+                <ScalarProperty Name="MailState" ColumnName="MailState" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drivers">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Driver">
+              <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="LicenseNo" ColumnName="LicenseNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="HomeType" ColumnName="HomeType" />
+                <ScalarProperty Name="HomeStatusType" ColumnName="HomeStatusType" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="InsuranceDBModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicals">
+            <EntityTypeMapping TypeName="InsuranceDBModel.Vehical">
+              <MappingFragment StoreEntitySet="Vehical">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="VehicleUseId" ColumnName="VehicleUseId" />
+                <ScalarProperty Name="VehicalUse" ColumnName="VehicalUse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleUses">
+            <EntityTypeMapping TypeName="InsuranceDBModel.VehicleUse">
+              <MappingFragment StoreEntitySet="VehicleUse">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VINs">
+            <EntityTypeMapping TypeName="InsuranceDBModel.VIN">
+              <MappingFragment StoreEntitySet="VIN">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VIN1" ColumnName="VIN" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

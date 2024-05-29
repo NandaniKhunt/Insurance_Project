@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InsuranceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EffectiveDate" Type="DateTime" Precision="0" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GaragingAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ApartmentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Zipcode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MailApartment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MailZipcode" Type="Int32" />
+    <Property Name="Mailcity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MailState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Drivers" Relationship="Self.FK__Driver__Applican__4CA06362" FromRole="Applicant" ToRole="Driver" />
+    <NavigationProperty Name="Vehicals" Relationship="Self.FK__Vehical__Applica__403A8C7D" FromRole="Applicant" ToRole="Vehical" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="LicenseNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaritalStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="HomeType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HomeStatusType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Education" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Occupation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ApplicantId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Applicant" Relationship="Self.FK__Driver__Applican__4CA06362" FromRole="Driver" ToRole="Applicant" />
+    <NavigationProperty Name="State" Relationship="Self.FK__Driver__StateId__4BAC3F29" FromRole="Driver" ToRole="State" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Drivers" Relationship="Self.FK__Driver__StateId__4BAC3F29" FromRole="State" ToRole="Driver" />
+  </EntityType>
+  <EntityType Name="Vehical">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VIN" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ownership" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ApplicantId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="VehicleUseId" Type="Int32" />
+    <Property Name="VehicalUse" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Applicant" Relationship="Self.FK__Vehical__Applica__403A8C7D" FromRole="Vehical" ToRole="Applicant" />
+    <NavigationProperty Name="VehicleUse" Relationship="Self.FK__Vehical__Vehicle__440B1D61" FromRole="Vehical" ToRole="VehicleUse" />
+  </EntityType>
+  <EntityType Name="VehicleUse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vehicals" Relationship="Self.FK__Vehical__Vehicle__440B1D61" FromRole="VehicleUse" ToRole="Vehical" />
+  </EntityType>
+  <EntityType Name="VIN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VIN1" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Driver__Applican__4CA06362">
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1" />
+    <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Driver">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehical__Applica__403A8C7D">
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1" />
+    <End Role="Vehical" Type="Self.Vehical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehical">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Driver__StateId__4BAC3F29">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Driver">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehical__Vehicle__440B1D61">
+    <End Role="VehicleUse" Type="Self.VehicleUse" Multiplicity="0..1" />
+    <End Role="Vehical" Type="Self.Vehical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleUse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehical">
+        <PropertyRef Name="VehicleUseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InsuranceDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Applicants" EntityType="Self.Applicant" />
+    <EntitySet Name="Drivers" EntityType="Self.Driver" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="Vehicals" EntityType="Self.Vehical" />
+    <EntitySet Name="VehicleUses" EntityType="Self.VehicleUse" />
+    <EntitySet Name="VINs" EntityType="Self.VIN" />
+    <AssociationSet Name="FK__Driver__Applican__4CA06362" Association="Self.FK__Driver__Applican__4CA06362">
+      <End Role="Applicant" EntitySet="Applicants" />
+      <End Role="Driver" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehical__Applica__403A8C7D" Association="Self.FK__Vehical__Applica__403A8C7D">
+      <End Role="Applicant" EntitySet="Applicants" />
+      <End Role="Vehical" EntitySet="Vehicals" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Driver__StateId__4BAC3F29" Association="Self.FK__Driver__StateId__4BAC3F29">
+      <End Role="State" EntitySet="States" />
+      <End Role="Driver" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehical__Vehicle__440B1D61" Association="Self.FK__Vehical__Vehicle__440B1D61">
+      <End Role="VehicleUse" EntitySet="VehicleUses" />
+      <End Role="Vehical" EntitySet="Vehicals" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

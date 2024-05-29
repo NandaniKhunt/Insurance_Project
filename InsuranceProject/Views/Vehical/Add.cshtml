@@ -1,0 +1,127 @@
+﻿@model InsuranceProject.Models.Custom.VehicalModel
+@{
+    ViewBag.Title = "Add";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Vehicle</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/ScriptCode.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5 class="text-center">Vehicle Information</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div id="savedata" class="mb-3">
+                        </div>
+                        <form class="form-horizontal" method="post">
+                            <input type="hidden" id="applicantId" name="ApplicantId" value="@(ViewBag.ApplicantId)" />
+                            <div class="form-group">
+                               
+
+                                <label for="txtvin">Quote# @(ViewBag.ApplicantId)</label>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtvin">VIN</label>
+                                            <input type="text" id="txtvin" name="VIN" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dpyear">Year</label>
+                                            <select id="ddlyear" class="form-control">
+                                                <option value="">--Select Year--</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dpmake">Make</label>
+                                            <select id="dpmake" class="form-control">
+                                                <option value="">--Select Make--</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dpmodel">Model</label>
+                                            <select id="dpmodel" class="form-control">
+                                                <option value="">--Select Model--</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="btnVehicleUse">Vehicle Use</label>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" id="btnPleasure" class="btn btn-secondary" value="Pleasure">Pleasure</button>
+                                                <button type="button" id="btnCommute" class="btn btn-secondary active" value="Commute">Commute</button>
+                                                <button type="button" id="btnBusiness" class="btn btn-secondary" value="Business">Business</button>
+                                            </div>
+                                            <input type="hidden" id="btnuse" value="">
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="btnRideShare">Vehicle used for rideshare / TNC</label>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" id="btnRyes" class="btn btn-secondary">Yes</button>
+                                                <button type="button" id="btnRno" class="btn btn-secondary active">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="btnDelivery">Vehicle used for delivery (excluding rideshare)</label>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" id="btnDyes" class="btn btn-secondary active">Yes</button>
+                                                <button type="button" id="btnDno" class="btn btn-secondary">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dpown">Ownership</label>
+                                            <select id="dpown" class="form-control">
+                                                <option>--select--</option>
+                                                <option>Owned</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12 text-center">
+                                            <button type="submit" id="submitBtn" class="btn btn-success">Save & Continue to Driver </button>
+                                            <a href="#" class="btn btn-info" id="btnAdd">Save & Add Vehicle</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

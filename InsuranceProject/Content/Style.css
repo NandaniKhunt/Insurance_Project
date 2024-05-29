@@ -1,0 +1,54 @@
+﻿
+.colorful-bg {
+    background-color: gray;
+    color: black;
+}
+
+.navbar-top-links {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.navbar-right {
+    margin-left: 20px;
+}
+
+.navbar-right {
+    margin-right: 20px;
+}
+.btn-group .active {
+    background: #1067a0;
+    color: #fff
+}
+.btn-group .notActive {
+    background: #1067a0;
+    color: #fff
+}
+
+.error {
+    color: red;
+}
+.container {
+    margin-top: 50px;
+}
+
+.ibox {
+    border: 1px solid #e7eaec;
+    border-radius: 3px;
+    margin-bottom: 25px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.ibox-title {
+    background-color: #f3f3f4;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e7eaec;
+    border-radius: 3px 3px 0 0;
+}
+
+.ibox-content {
+    padding: 15px;
+}
+.hidden {
+    display: none;
+}

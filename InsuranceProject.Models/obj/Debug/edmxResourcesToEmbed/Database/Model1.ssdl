@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InsuranceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EffectiveDate" Type="date" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+    <Property Name="GaragingAddress" Type="varchar" MaxLength="200" />
+    <Property Name="ApartmentAddress" Type="varchar" MaxLength="200" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="15" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="MailAddress" Type="varchar" MaxLength="200" />
+    <Property Name="MailApartment" Type="varchar" MaxLength="200" />
+    <Property Name="MailZipcode" Type="int" />
+    <Property Name="Mailcity" Type="varchar" MaxLength="50" />
+    <Property Name="MailState" Type="varchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="LicenseNo" Type="varchar" MaxLength="30" />
+    <Property Name="Status" Type="varchar" MaxLength="30" />
+    <Property Name="FirstName" Type="varchar" MaxLength="30" />
+    <Property Name="LastName" Type="varchar" MaxLength="30" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="MaritalStatus" Type="varchar" MaxLength="15" />
+    <Property Name="HomeType" Type="varchar" MaxLength="20" />
+    <Property Name="HomeStatusType" Type="varchar" MaxLength="20" />
+    <Property Name="Education" Type="varchar" MaxLength="30" />
+    <Property Name="Occupation" Type="varchar" MaxLength="30" />
+    <Property Name="ApplicantId" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="DOB" Type="date" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Vehical">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VIN" Type="varchar" MaxLength="18" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Make" Type="varchar" MaxLength="50" />
+    <Property Name="Model" Type="varchar" MaxLength="50" />
+    <Property Name="Ownership" Type="varchar" MaxLength="10" />
+    <Property Name="ApplicantId" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="VehicleUseId" Type="int" />
+    <Property Name="VehicalUse" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="VehicleUse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="VIN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VIN" Type="varchar" MaxLength="18" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Make" Type="varchar" MaxLength="50" />
+    <Property Name="Model" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Driver__Applican__4CA06362">
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1" />
+    <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Driver">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Driver__StateId__4BAC3F29">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Driver">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehical__Applica__403A8C7D">
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1" />
+    <End Role="Vehical" Type="Self.Vehical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehical">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehical__Vehicle__440B1D61">
+    <End Role="VehicleUse" Type="Self.VehicleUse" Multiplicity="0..1" />
+    <End Role="Vehical" Type="Self.Vehical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleUse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehical">
+        <PropertyRef Name="VehicleUseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InsuranceDBModelStoreContainer">
+    <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehical" EntityType="Self.Vehical" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VehicleUse" EntityType="Self.VehicleUse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VIN" EntityType="Self.VIN" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Driver__Applican__4CA06362" Association="Self.FK__Driver__Applican__4CA06362">
+      <End Role="Applicant" EntitySet="Applicant" />
+      <End Role="Driver" EntitySet="Driver" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Driver__StateId__4BAC3F29" Association="Self.FK__Driver__StateId__4BAC3F29">
+      <End Role="State" EntitySet="State" />
+      <End Role="Driver" EntitySet="Driver" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehical__Applica__403A8C7D" Association="Self.FK__Vehical__Applica__403A8C7D">
+      <End Role="Applicant" EntitySet="Applicant" />
+      <End Role="Vehical" EntitySet="Vehical" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehical__Vehicle__440B1D61" Association="Self.FK__Vehical__Vehicle__440B1D61">
+      <End Role="VehicleUse" EntitySet="VehicleUse" />
+      <End Role="Vehical" EntitySet="Vehical" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

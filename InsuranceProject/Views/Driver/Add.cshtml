@@ -1,0 +1,169 @@
+﻿@model InsuranceProject.Models.Custom.DriverModel
+@{
+    ViewBag.Title = "Add";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Vehicle</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/DriverScript.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5 class="text-center">Driver Information</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div id="savedata" class="mb-3">
+                        </div>
+
+                        <form class="form-horizontal" method="post">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="txtno">Driver License No</label>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <select id="dpstate" class="form-control">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtno" name="no" class="form-control" />
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <select id="dpstatus" class="form-control">
+                                                        <option>--select--</option>
+                                                        <option>Valid</option>
+                                                        <option>Permit</option>
+                                                        <option>Revoked</option>
+                                                        <option>Suspended</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Date Of Birth</label>
+                                        <input type="date" id="txtdate" name="BirthDate" class="form-control" />
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtfnm">First Name</label>
+                                            <input type="text" id="txtfnm" name="FirstName" class="form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="txtlnm">Last Name</label>
+                                            <input type="text" id="txtlnm" name="LastName" class="form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="btngender">Gender</label>
+                                            <div class="btn-group" role="group" id="btngender">
+                                                <button type="button" id="btnmale" class="btn btn-secondary" value="Male">Male</button>
+                                                <button type="button" id="btnfemale" class="btn btn-secondary" value="Female">Female</button>
+                                            </div>
+                                            <input type="hidden" id="btngen" value="">
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="btnsatus">Marital Status</label>
+                                            <div class="btn-group" role="group" id="btnsatus">
+                                                <button type="button" id="btnsingle" class="btn btn-secondary" value="Single">Single</button>
+                                                <button type="button" id="btnmarried" class="btn btn-secondary" value="Married">Married</button>
+                                                <button type="button" id="btnseperate" class="btn btn-secondary" value="Seperated">Seperated</button>
+                                            </div>
+                                            <input type="hidden" id="btnmrg" value="">
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dphome">HomeType</label>
+                                            <select id="dphome" class="form-control">
+                                                <option>--select--</option>
+                                                <option>Homeowner</option>
+                                                <option>Mobile Homeowner </option>
+                                                <option>Rental</option>
+                                                <option>Apartment</option>
+                                                <option>No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dphometype">Home Status Type</label>
+                                            <select id="dphometype" class="form-control">
+                                                <option>--select--</option>
+                                                <option>Own</option>
+                                                <option>Rent</option>
+                                                <option>Lease</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dpedu">Driver Maximum Eduction-level</label>
+                                            <select id="dpedu" class="form-control">
+                                                <option>--select--</option>
+                                                <option>Bachelors Degree</option>
+                                                <option>Master Degree</option>
+                                                <option>PH.D</option>
+                                                <option>Medical Degree</option>
+                                                <option>Some College - NO Degree</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dpocc">Occupation</label>
+                                            <select id="dpocc" class="form-control">
+                                                <option>--select--</option>
+                                                <option>Administartive</option>
+                                                <option>Driver</option>
+                                                <option>Electrician</option>
+                                                <option>HomeMaker</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-4">
+                                        <div class="col-md-12 text-center">
+                                            <button type="submit" id="btnsubmit" class="btn btn-success">Save</button>
+                                            <a href="#" class="btn btn-info" id="btnsave">Save & Add Driver</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

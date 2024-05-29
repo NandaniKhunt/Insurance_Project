@@ -1,0 +1,10 @@
+D:\nandini\ProjectInsurance\InsuranceProject.Models\bin\Debug\InsuranceProject.Models.dll.config
+D:\nandini\ProjectInsurance\InsuranceProject.Models\bin\Debug\InsuranceProject.Models.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Models\bin\Debug\InsuranceProject.Models.pdb
+D:\nandini\ProjectInsurance\InsuranceProject.Models\bin\Debug\EntityFramework.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Models\bin\Debug\EntityFramework.xml
+D:\nandini\ProjectInsurance\InsuranceProject.Models\obj\Debug\InsuranceProject.Models.csproj.CoreCompileInputs.cache
+D:\nandini\ProjectInsurance\InsuranceProject.Models\obj\Debug\InsuranceProject.Models.csproj.CopyComplete
+D:\nandini\ProjectInsurance\InsuranceProject.Models\obj\Debug\InsuranceProject.Models.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Models\obj\Debug\InsuranceProject.Models.pdb
+D:\nandini\ProjectInsurance\InsuranceProject.Models\obj\Debug\InsuranceProject.Models.csproj.AssemblyReference.cache

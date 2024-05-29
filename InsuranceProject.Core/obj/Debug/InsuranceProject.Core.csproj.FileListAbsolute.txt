@@ -1,0 +1,5 @@
+D:\nandini\ProjectInsurance\InsuranceProject.Core\bin\Debug\InsuranceProject.Core.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Core\bin\Debug\InsuranceProject.Core.pdb
+D:\nandini\ProjectInsurance\InsuranceProject.Core\obj\Debug\InsuranceProject.Core.csproj.CoreCompileInputs.cache
+D:\nandini\ProjectInsurance\InsuranceProject.Core\obj\Debug\InsuranceProject.Core.dll
+D:\nandini\ProjectInsurance\InsuranceProject.Core\obj\Debug\InsuranceProject.Core.pdb
